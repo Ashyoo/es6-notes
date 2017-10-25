@@ -14,7 +14,7 @@
 ```
 * 暂时性死区
 ```
-    var tmp = 123;
+    var tmp = 123; 
 
     if (true) {
       tmp = 'abc'; // 报错ReferenceError
