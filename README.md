@@ -53,6 +53,7 @@
     // SyntaxError: Missing initializer in const declaration
     对于const来说，只声明不赋值，就会报错。
 ```
+
 * const命令声明的常量也是不提升，同样存在暂时性死区，只能在声明的位置后面使用
 ```
     if (true) {
