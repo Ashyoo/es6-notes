@@ -123,6 +123,7 @@
 ## 数组
 
 * 使用扩展运算符 ... copy数组或者对象
+
 ```
     const arrs = [1,2,3]
     const itemArrs = [...arrs]
