@@ -129,6 +129,7 @@
     const itemArrs = [...arrs]
 ```
 * 使用Array.from方法，将类似数组的对象转为数组
+
 ```
     const foo = document.querySelectorAll('.foo');
     const nodes = Array.from(foo);
