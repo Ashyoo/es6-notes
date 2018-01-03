@@ -154,6 +154,7 @@
 ```
 
 * es6的继承
+
 ```
     class Your {
         constructor(){
