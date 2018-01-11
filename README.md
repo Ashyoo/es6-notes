@@ -135,6 +135,7 @@
     const foo = document.querySelectorAll('.foo');
     const nodes = Array.from(foo);
 ```
+
 * 数组的操作
 ```
     const shopId = 'qwerafdhdhkghjgk'
