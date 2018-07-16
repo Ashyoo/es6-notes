@@ -196,12 +196,61 @@ Class之间可以通过extends关键字实现继承，这比ES5的通过修改�
 
 ## promise 用来传递异步操作
 
-简单说，它的思想是，每一个异步任务返回一个Promise对象，**该对象有一个then方法，允许指定回调函数。比如，f1的回调函数f2,可以写成：**
-promise 会返回两个参数 --- resolve和reject(成功和失败)
+简单说，它的思想是，每一个异步任务返回一个Promise对象<br />
 
-```
-　　f1()
-    .then(f2)
-    .then(f3)
-    .catch(err) // 出现错误的回调
+**该对象有一个then方法和catch方法：**
+
+* then() 可以接收两个参数,第一个对应Promise中调用的resolve,第二个对应reject
+* catch() 和then的第二个参数一样,可以接收reject的回调,如果then方法的第一个参数中抛出错误时,也会进到catch方法中
+
+```javascript
+    // 用setTimeout来模仿异步操作,和ajax是一样的意思
+
+    var fn1 = sum => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (sum) {
+                    resolve(sum.split('').reverse('').join(''))
+                } else {
+                    reject('这里是一个❌')
+                }
+            }, 2000)
+            
+        })
+    }
+
+    fn1('abcde')
+    .then(resolve => console.log(resolve)) // edcba
+
+    fn1()
+    .then(resolve => console.log(resolve))
+    .catch(reject => console.log('进入了catch的reject')) // 进入了catch的reject
+
+    fn1()
+    .then(resolve => console.log(resolve), reject => console.log('进入了then的reject'))
+    .catch(reject => console.log('进入了catch的reject')) // 进入了then的reject
+   
+    // *-----------------------再来一种--------------------------------* //
+
+    var fn2 = () => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('大概我是咸鱼吧')
+            }, 2000)
+        })
+    }
+
+    // 在resolve中抛出错误
+    fn2()
+    .then(resolve => { throw Error }, )
+    .catch(reject => console.log('收到错误')) // 收到错误
+
+    // 重新试一种情况
+    fn2()
+    .then(resolve => { throw Error }, )
+    .then(resolve => {}, reject => console.log('进入then中的reject'))
+    .catch(reject => console.log('收到错误'))
+    // 进入then中的reject
+
+    // 大概是这样吧,在then方法中的reject回调中接收了错误❎,便不再回继续执行catch了
 ```
