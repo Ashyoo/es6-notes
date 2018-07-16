@@ -5,7 +5,7 @@
 * ES6 新增了let命令，用来声明变量。它的用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效。
 * let 不存在变量提升,var 存在变量提升，也就是在变量声明之前使用，输出undefined
 
-```
+```javascript
     // var 的情况
     console.log(foo); // 输出undefined
     var foo = 2;
@@ -17,7 +17,7 @@
 
 * 暂时性死区(也就是变量的提升)
 
-```
+```javascript
     var tmp = 123; 
 
     if (true) {
@@ -30,7 +30,7 @@
 
 * 不允许重复声明 let不允许在相同作用域内，重复声明同一个变量。
 
-```
+```javascript
     // 报错
     function func() {
       let a = 10;
@@ -50,7 +50,7 @@
 * 声明一个只读的常量。一旦声明，常量的值就不能改变。
 * const声明的变量不得改变值，这意味着，const一旦声明变量，就必须立即初始化，不能留到以后赋值。
 
-```
+```javascript
     const foo;
     // SyntaxError: Missing initializer in const declaration
     对于const来说，只声明不赋值，就会报错。
@@ -58,7 +58,7 @@
 
 * const命令声明的常量也是不提升，同样存在暂时性死区，只能在声明的位置后面使用
 
-```
+```javascript
     if (true) {
       const MAX = 5;
     }
@@ -74,7 +74,7 @@
 
 > this对象的指向是可变的，但是在箭头函数中，它是固定的。
 
-```
+```javascript
     function foo() {
       setTimeout(() => {
         console.log('id:', this.id);
@@ -93,7 +93,7 @@
 
 ## 取json对象的值的两种方法
 
-```
+```javascript
     let data = {
     	name: '111',
     	'2': '222',
@@ -107,7 +107,7 @@
 
 * 数组的解构赋值
 
-```
+```javascript
     let [a,c] = new Set([1,2]) // Set 定义一个集合，里面的值不能重复
     console.log(a,c)
 
@@ -117,7 +117,7 @@
 
 * 对象的解构赋值
 
-```
+```javascript
     import { Select, Input, DatePicker, Table } from 'antd'
     // 会从antd中分别取到相对应的变量
 ```
@@ -126,21 +126,21 @@
 
 * 使用扩展运算符 ... copy数组或者对象
 
-```
+```javascript
     const arrs = [1,2,3]
     const itemArrs = [...arrs]
 ```
 
 * 使用Array.from方法，将类似数组的对象转为数组
 
-```
+```javascript
     const foo = document.querySelectorAll('.foo');
     const nodes = Array.from(foo);
 ```
 
 * 数组的操作
 
-```
+```javascript
     const shopId = 'qwerafdhdhkghjgk'
     let shops = [{
       'name': '今日头条2',
@@ -160,7 +160,7 @@
 
 * es6的继承
 
-```
+```javascript
     class Your {
         constructor(){
             this.type = 'you'
@@ -252,5 +252,5 @@ Class之间可以通过extends关键字实现继承，这比ES5的通过修改�
     .catch(reject => console.log('收到错误'))
     // 进入then中的reject
 
-    // 大概是这样吧,在then方法中的reject回调中接收了错误❎,便不再回继续执行catch了
+    // 大概是这样吧,在then方法中的reject回调中接收了错误❎,便不再会继续执行catch了
 ```
